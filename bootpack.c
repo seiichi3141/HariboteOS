@@ -11,6 +11,8 @@ void set_palette(int start, int end, unsigned char *rgb);
 void HariMain(void) {
 	int i;
 
+	init_palette();
+	
 	for (i = 0xa0000; i <= 0xaffff; i++) {
 		*((char*)i) = i & 0x0f;
 	}
