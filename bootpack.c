@@ -28,13 +28,13 @@ void boxfill8(unsigned char *vram, int xsize, unsigned char c, int x0, int y0, i
 
 
 void HariMain(void) {
-	int i;
-
 	init_palette();
 
-	for (i = 0xa0000; i <= 0xaffff; i++) {
-		*((char*)i) = i & 0x0f;
-	}
+	char *p = (char*)0xa0000;
+
+	boxfill8(p, 320, COL8_FF0000,  20,  20, 120, 120);
+	boxfill8(p, 320, COL8_00FF00,  70,  50, 170, 150);
+	boxfill8(p, 320, COL8_0000FF, 120,  80, 220, 180);
 
 	for (;;) {
 		io_hlt();
@@ -77,5 +77,15 @@ void set_palette(int start, int end, unsigned char *rgb) {
 		rgb += 3;
 	}
 	io_store_eflags(eflags);			/* Š„‚èž‚Ý‹–‰Â‚É–ß‚· */
+	return;
+}
+
+void boxfill8(unsigned char *vram, int xsize, unsigned char c, int x0, int y0, int x1, int y1) {
+	int x, y;
+	for (y = y0; y <= y1; y++) {
+		for (x = x0; x <= x1; x++) {
+			vram[y * xsize + x] = c;
+		}
+	}
 	return;
 }
