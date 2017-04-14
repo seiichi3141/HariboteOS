@@ -76,6 +76,7 @@ next:
 		JB		readloop		; CH < CYLS ‚¾‚Á‚½‚çreadloop‚Ö
 
 ; haribote.sys‚ÌŽÀs
+		MOV		[0x0ff0],CH
 		JMP		0xc200
 
 error:
