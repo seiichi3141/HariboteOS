@@ -5,6 +5,12 @@ https://www.amazon.co.jp/dp/B00IR1HYI0/
 サポートサイトからツール類のダウンロードが必要
 https://book.mynavi.jp/supportsite/detail/4839919844.html
 
+##
+(AT)BIOS
+http://oswiki.osask.jp/?%28AT%29BIOS
+
+VGA
+http://oswiki.osask.jp/?cmd=read&page=VGA
 
 ## レジスタ
 AX	Accumulator
