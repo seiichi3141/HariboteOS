@@ -14,30 +14,51 @@ http://oswiki.osask.jp/?cmd=read&page=VGA
 
 ## ÉåÉWÉXÉ^
 AX	Accumulator
+
 CX	Counter
+
 DX	Data
+
 BX	Base
+
 SP	Stack pointer
+
 BP	Base pointer
+
 SI	Source index
+
 DI	Destination index
 
 AL	Accumulator low
+
 CL	Counter low
+
 DL	Data low
+
 BL	Base low
+
 AH	Accumulator high
+
 CH	Counter high
+
 DH	Data high
+
 BH	Base high
 
 EAX
+
 ECX
+
 EDX
+
 EBX
+
 ESP
+
 EBP
+
 ESI
+
 EDI
 
 ES	Extra segment
