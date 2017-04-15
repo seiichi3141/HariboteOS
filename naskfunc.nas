@@ -7,7 +7,9 @@
 ; objファイルの情報
 [FILE "naskfunc.nas"]
         GLOBAL  _io_hlt, _write_mem8
-		GLOBAL	_io_cli, _io_out8, _io_load_eflags, _io_store_eflags
+		GLOBAL	_io_cli, _io_out8
+		GLOBAL	_io_load_eflags, _io_store_eflags
+		GLOBAL	_load_gdtr, _load_idtr
 
 ; 関数の実態
 [SECTION .text]		; objファイルを書くときの約束事
@@ -47,4 +49,18 @@ _io_store_eflags:	; void io_store_eflags(int eflags);
 		MOV		EAX,[ESP+4]
 		PUSH	EAX
 		POPFD		; POP EFLAGSの意
+		RET
+
+;
+_load_gdtr:			; void load_gdtr(int limit, int addr);
+		MOV		AX,[ESP+4]
+		MOV		[ESP+6],AX
+		LGDT	[ESP+6]
+		RET
+
+;
+_load_idtr:			; void load_idtr(int limit, int addr)
+		MOV		AX,[ESP+4]
+		MOV		[ESP+6],AX
+		LIDT	[ESP+6]
 		RET
