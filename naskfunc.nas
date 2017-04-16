@@ -7,7 +7,9 @@
 ; objファイルの情報
 [FILE "naskfunc.nas"]
         GLOBAL  _io_hlt, _write_mem8
-		GLOBAL	_io_cli, _io_sti, _io_out8
+		GLOBAL	_io_cli, _io_sti
+		GLOBAL	_io_in8
+		GLOBAL	_io_out8
 		GLOBAL	_io_load_eflags, _io_store_eflags
 		GLOBAL	_load_gdtr, _load_idtr
 		GLOBAL	_asm_inthandler21, _asm_inthandler27, _asm_inthandler2c
@@ -38,7 +40,14 @@ _io_sti:			; void io_sti(void);
 		STI
 		RET
 
-; デバイスへのIO出力
+; デバイスからの入力
+_io_in8:			; int io_in8(int port);
+		MOV		EDX,[ESP+4]
+		MOV		EAX,0
+		IN		AL,DX
+		RET
+
+; デバイスへの出力
 _io_out8:			; void io_out8(int port, int data);
 		MOV		EDX,[ESP+4]
 		MOV		AL,[ESP+8]

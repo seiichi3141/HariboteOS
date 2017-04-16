@@ -1,72 +1,54 @@
-# HariboteOS
-「30日でできる! OS自作入門」から
-https://www.amazon.co.jp/dp/B00IR1HYI0/
+# 30日でできる! OS自作入門
+OSを自作する。
 
-サポートサイトからツール類のダウンロードが必要
-https://book.mynavi.jp/supportsite/detail/4839919844.html
+書籍。Kindle版もあり。
+[「30日でできる! OS自作入門」(Amazon)](https://www.amazon.co.jp/dp/B00IR1HYI0/
+)
 
-##
-(AT)BIOS
-http://oswiki.osask.jp/?%28AT%29BIOS
+[サポートサイト](https://book.mynavi.jp/supportsite/detail/4839919844.html)からツール類のダウンロードが可能
 
-VGA
-http://oswiki.osask.jp/?cmd=read&page=VGA
+## Wiki
+[(AT)BIOS](http://oswiki.osask.jp/?%28AT%29BIOS)
 
-## レジスタ
-AX	Accumulator
+[VGA](http://oswiki.osask.jp/?VGA)
 
-CX	Counter
+[(PIC)8259A](http://oswiki.osask.jp/?%28PIC%298259A)
 
-DX	Data
-
-BX	Base
-
-SP	Stack pointer
-
-BP	Base pointer
-
-SI	Source index
-
-DI	Destination index
-
-AL	Accumulator low
-
-CL	Counter low
-
-DL	Data low
-
-BL	Base low
-
-AH	Accumulator high
-
-CH	Counter high
-
-DH	Data high
-
-BH	Base high
-
-EAX
-
-ECX
-
-EDX
-
-EBX
-
-ESP
-
-EBP
-
-ESI
-
-EDI
-
-ES	Extra segment
-CS	Code segment
-SS	Stack segment
-DS	Data segment
-FS
-GS
+[(AT)keyboard](http://oswiki.osask.jp/?%28AT%29keyboard)
 
 ## nask
 ビルドに失敗した時は*.lstを見ると原因がわかる
+
+## レジスタ
+|  |  |  |
+|-----------|------------|------------|
+| AX | Accumulator |  |
+| CX | Counter |  |
+| DX | Data |  |
+| BX | Base |  |
+| SP | Stack pointer |  |
+| BP | Base pointer |  |
+| SI | Source index |  |
+| DI | Destination index |  |
+| AL | Accumulator low |  |
+| CL | Counter low |  |
+| DL | Data low |  |
+| BL | Base low |  |
+| AH | Accumulator high |  |
+| CH | Counter high |  |
+| DH | Data high |  |
+| BH | Base high |  |
+| EAX |  |  |
+| ECX |  |  |
+| EDX |  |  |
+| EBX |  |  |
+| ESP |  |  |
+| EBP |  |  |
+| ESI |  |  |
+| EDI |  |  |
+| ES | Extra segment |  |
+| CS | Code segment |  |
+| SS | Stack segment |  |
+| DS | Data segment  |
+| FS |  |  |
+| GS |  |  |
