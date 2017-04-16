@@ -1,16 +1,12 @@
 #include <stdio.h>
 #include "bootpack.h"
 
-struct BOOTINFO {
-	char cyls, leds, vmode, reserve;
-	short scrnx, scrny;
-	char *vram;
-};
-
 void HariMain(void) {
-	struct BOOTINFO *binfo = (struct BOOTINFO*)0x0ff0;
+	struct BOOTINFO *binfo = (struct BOOTINFO*)ADR_BOOTINFO;
 
 	init_gdtidt();
+	init_pic();
+	
 	init_palette();
 	init_screen(binfo->vram, binfo->scrnx, binfo->scrny);
 

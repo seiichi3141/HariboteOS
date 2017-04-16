@@ -1,8 +1,5 @@
 #include "bootpack.h"
 
-int io_load_eflags(void);
-void io_store_eflags(int eflags);
-
 void init_palette(void) {
 	static unsigned char table_rgb[16 * 3] = {
 		0x00, 0x00, 0x00,	/*  0:çï */
