@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "bootpack.h"
 
-extern struct KEYBUF keybuf;
+extern struct FIFO8 keyfifo;
 
 void HariMain(void) {
 	struct BOOTINFO *binfo = (struct BOOTINFO*)ADR_BOOTINFO;
@@ -10,6 +10,9 @@ void HariMain(void) {
 	init_pic();
 	io_sti();
 	
+	char keybuf[32];
+	fifo8_init(&keyfifo, 32, keybuf);
+
 	init_palette();
 	init_screen(binfo->vram, binfo->scrnx, binfo->scrny);
 
@@ -28,15 +31,10 @@ void HariMain(void) {
 	
 	for (;;) {
 		io_cli();
-		if (keybuf.len == 0) {
+		if (fifo8_status(&keyfifo) == 0) {
 			io_stihlt();
 		} else {
-			int i = keybuf.data[keybuf.next_r];
-			keybuf.len--;
-			keybuf.next_r++;
-			if (keybuf.next_r == 32) {
-				keybuf.next_r = 0;
-			}
+			int i = fifo8_get(&keyfifo);
 			io_sti();
 			unsigned char s[40];
 			sprintf(s, "%02X", i);
