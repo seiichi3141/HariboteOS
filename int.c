@@ -23,17 +23,15 @@ void init_pic(void) {
 
 #define PORT_KEYDAT		0x0060
 
-void inthandler21(int *esp) {
-	struct BOOTINFO *binfo = (struct BOOTINFO*)ADR_BOOTINFO;
+struct KEYBUF keybuf;
 
+void inthandler21(int *esp) {
 	io_out8(PIC0_OCW2, 0x61);	/* IRQ-01Žó•tŠ®—¹‚ð’Ê’m */
 	unsigned char data = io_in8(PORT_KEYDAT);
-
-	boxfill8(binfo->vram, binfo->scrnx, COL8_008484, 0, 16, 15, 31);
-	unsigned char s[4];
-	sprintf(s, "%02X", data);
-	putfonts8_asc(binfo->vram, binfo->scrnx, 0, 16, COL8_FFFFFF, s);
-
+	if (keybuf.flag == 0) {
+		keybuf.data = data;
+		keybuf.flag = 1;
+	}
 	return;
 }
 

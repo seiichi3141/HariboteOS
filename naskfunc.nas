@@ -7,7 +7,7 @@
 ; objファイルの情報
 [FILE "naskfunc.nas"]
         GLOBAL  _io_hlt, _write_mem8
-		GLOBAL	_io_cli, _io_sti
+		GLOBAL	_io_cli, _io_sti, _io_stihlt
 		GLOBAL	_io_in8
 		GLOBAL	_io_out8
 		GLOBAL	_io_load_eflags, _io_store_eflags
@@ -38,6 +38,12 @@ _io_cli:			; void io_cli(void);
 ; 割り込み許可
 _io_sti:			; void io_sti(void);
 		STI
+		RET
+
+; 割り込み許可後待ち
+_io_stihlt:			; void io_stihlt(void);
+		STI
+		HLT
 		RET
 
 ; デバイスからの入力
