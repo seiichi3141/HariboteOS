@@ -2,8 +2,7 @@
 OSを自作する。
 
 書籍。Kindle版もあり。
-[「30日でできる! OS自作入門」(Amazon)](https://www.amazon.co.jp/dp/B00IR1HYI0/
-)
+[「30日でできる! OS自作入門」(Amazon)](https://www.amazon.co.jp/dp/B00IR1HYI0/)
 
 [サポートサイト](https://book.mynavi.jp/supportsite/detail/4839919844.html)からツール類のダウンロードが可能
 
