@@ -1,4 +1,5 @@
-OBJS = bootpack.obj naskfunc.obj hankaku.obj graphic.obj dsctbl.obj int.obj fifo.obj
+OBJS = bootpack.obj naskfunc.obj hankaku.obj graphic.obj dsctbl.obj \
+		int.obj fifo.obj keyboard.obj mouse.obj
 
 TOOLPATH	= ../z_tools/
 INCPATH		= ../z_tools/haribote
@@ -75,4 +76,4 @@ run:
 clean:
 	-$(DEL) *.bin *.lst *.gas *.obj \
 		bootpack.nas bootpack.map bootpack.bim bootpack.hrb haribote.sys haribote.img \
-		graphic.nas dsctbl.nas int.nas fifo.nas
+		graphic.nas dsctbl.nas int.nas fifo.nas keyboard.nas mouse.nas
