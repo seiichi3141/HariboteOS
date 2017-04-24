@@ -43,10 +43,7 @@ void HariMain(void) {
 	init_screen8(buf_back, binfo->scrnx, binfo->scrny);
 	init_mouse_cursor8(buf_mouse, 99);
 
-	make_window8(buf_win, 160, 68, "window");
-	putfonts8_asc(buf_win, 160, 24, 28, COL8_000000, "Welcome to");
-	putfonts8_asc(buf_win, 160, 24, 44, COL8_000000, "  Haribote-OS!");
-
+	make_window8(buf_win, 160, 68, "counter");
 
 	int mx = (binfo->scrnx - 16) / 2;
 	int my = (binfo->scrny - 28 - 16) / 2;
@@ -69,7 +66,14 @@ void HariMain(void) {
 	
 	sheet_refresh(sht_back, 0, 0, binfo->scrnx, 48);
 
+	int count = 0;
 	for (;;) {
+		count++;
+		sprintf(s, "%010d", count);
+		boxfill8(buf_win, 160, COL8_C6C6C6, 40, 28, 119, 43);
+		putfonts8_asc(buf_win, 160, 40, 28, COL8_000000, s);
+		sheet_refresh(sht_win, 40, 28, 120, 44);
+
 		io_cli();
 		if (fifo8_status(&keyfifo) != 0) {
 			int i = fifo8_get(&keyfifo);
@@ -119,7 +123,7 @@ void HariMain(void) {
 				sheet_slide(sht_mouse, mx, my);
 			}
 		} else {
-			io_stihlt();
+			io_sti();
 		}
 	}
 }
