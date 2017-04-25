@@ -18,6 +18,11 @@ void HariMain(void) {
 	io_out8(PIC0_IMR, 0xf8);	/* Š„‚èž‚Ý‚ð‹–‰Â‚·‚é‚½‚ß‚ÉÝ’è, PIT‚ð’Ç‰Á */
 	io_out8(PIC1_IMR, 0xef);
 	
+	struct FIFO8 timerfifo;
+	char timerbuf[8];
+	fifo8_init(&timerfifo, 8, timerbuf);
+	settimer(1000, &timerfifo, 1);
+
 	init_keyboard();
 
 	struct MOUSE_DEC mdec;
@@ -121,6 +126,11 @@ void HariMain(void) {
 				sheet_refresh(sht_back, 0, 0, 80, 16);
 				sheet_slide(sht_mouse, mx, my);
 			}
+		} else if (fifo8_status(&timerfifo) != 0) {
+			int i = fifo8_get(&timerfifo);
+			io_sti();
+			putfonts8_asc(buf_back, binfo->scrnx, 0, 64, COL8_FFFFFF, "10[sec]");
+			sheet_refresh(sht_back, 0, 64, 56, 80);
 		} else {
 			io_sti();
 		}
