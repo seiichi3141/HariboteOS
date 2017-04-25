@@ -14,6 +14,7 @@ void HariMain(void) {
 	fifo8_init(&keyfifo, 32, keybuf);
 	fifo8_init(&mousefifo, 128, mousebuf);
 
+	init_pit();
 	io_out8(PIC0_IMR, 0xf9);
 	io_out8(PIC1_IMR, 0xef);
 	

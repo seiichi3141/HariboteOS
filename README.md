@@ -15,6 +15,8 @@ OS‚ğ©ì‚·‚éB
 
 [(AT)keyboard](http://oswiki.osask.jp/?%28AT%29keyboard)
 
+[(PIT)8254](http://oswiki.osask.jp/?%28PIT%298254)
+
 ## nask
 ƒrƒ‹ƒh‚É¸”s‚µ‚½‚Í*.lst‚ğŒ©‚é‚ÆŒ´ˆö‚ª‚í‚©‚é
 
