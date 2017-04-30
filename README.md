@@ -17,6 +17,8 @@ OS‚ğ©ì‚·‚éB
 
 [(PIT)8254](http://oswiki.osask.jp/?%28PIT%298254)
 
+[VESA](http://oswiki.osask.jp/?VESA)
+
 ## nask
 ƒrƒ‹ƒh‚É¸”s‚µ‚½‚Í*.lst‚ğŒ©‚é‚ÆŒ´ˆö‚ª‚í‚©‚é
 
