@@ -5,6 +5,13 @@ void make_window8(unsigned char *buf, int xsize, int ysize, char *title);
 void putfonts8_asc_sht(struct SHEET *sht, int x, int y, int c, int b, char *s, int l);
 void make_textbox8(struct SHEET *sht, int x0, int y0, int sx, int sy, int c);
 
+struct TSS32 {
+	int backlink, esp0, ss0, esp1, ss1, esp2, ss2, cr3;
+	int eip, eflags eax, ecx, edx, ebx, esp, ebp, esi, edi;
+	int es, cs, ss, ds, fs, gs;
+	int ldtr, iomap;
+};
+
 void HariMain(void) {
 	struct BOOTINFO *binfo = (struct BOOTINFO*)ADR_BOOTINFO;
 	struct FIFO32 fifo;
@@ -30,6 +37,8 @@ void HariMain(void) {
 		0,   0,   0,   0,   0,   0,   0,   '7', '8', '9', '-', '4', '5', '6', '+', '1',
 		'2', '3', '0', '.'
 	};
+	struct TSS32 tss_a, tss_b;
+	struct SEGMENT_DESCRIPTOR *gdt = (struct SEGMENT_DESCRIPTOR*)ADR_GDT;
 
 	init_gdtidt();
 	init_pic();
@@ -96,6 +105,13 @@ void HariMain(void) {
 	sprintf(s, "memory %dMB   free : %dKB",
 		memtotal / (1024 * 1024), memman_total(memman) / 1024);;
 	putfonts8_asc_sht(sht_back, 0, 32, COL8_FFFFFF, COL8_008484, s, 40);
+
+	tss_a.ldtr = 0;
+	tss_a.iomap = 0x40000000;
+	tss_b.ldtr = 0;
+	tss_b.iomap = 0x40000000;
+	set_segmdesc(gdt + 3, 103, (int)&tss_a, AR_TSS32);
+	set_segmdesc(gdt + 4, 103, (int)&tss_b, AR_TSS32);
 
 	for (;;) {
 		io_cli();
