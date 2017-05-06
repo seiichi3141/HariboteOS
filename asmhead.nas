@@ -39,7 +39,7 @@ VRAM	EQU		0x0ff8
 ; 画面モード情報確認
 		CMP		BYTE [ES:DI+0x19],8
 		JNE		scrn320
-		MOV		BYTE [ES:DI+0x1b],4
+		CMP		BYTE [ES:DI+0x1b],4
 		JNE		scrn320
 		MOV		AX,[ES:DI+0x00]
 		AND		AX,0x0080
