@@ -55,7 +55,7 @@ haribote.img: ipl.bin haribote.sys Makefile
 		copy from:haribote.sys to:@: \
 		imgout:haribote.img
 
-%.gas: %.c Makefile
+%.gas: %.c bootpack.h Makefile
 	$(CC1) -o $*.gas $*.c
 
 %.nas: %.gas Makefile
